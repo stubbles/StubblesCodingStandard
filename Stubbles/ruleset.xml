@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<ruleset name="Stubbles">
+  <description>The Stubbles coding standard.</description>
+
+  <!-- Generic -->
+  <rule ref="Generic.Files.LineEndings"/>
+  <rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman"/>
+  <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+  <rule ref="Generic.PHP.DisallowShortOpenTag"/>
+  <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
+  <rule ref="Generic.WhiteSpace.ScopeIndent"/>
+
+  <!-- PEAR -->
+  <!--rule ref="PEAR.Functions.FunctionCallArgumentSpacing"/-->
+  <rule ref="PEAR.Functions.ValidDefaultValue"/>
+
+  <!-- Squiz -->
+  <rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
+  <rule ref="Squiz.Classes.LowercaseClassKeywords"/>
+  <rule ref="Squiz.Classes.SelfMemberReference"/>
+  <rule ref="Squiz.Commenting.DocCommentAlignment"/>
+  <rule ref="Squiz.Commenting.EmptyCatchComment"/>
+  <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
+  <rule ref="Squiz.Functions.GlobalFunction"/>
+  <rule ref="Squiz.Functions.LowercaseFunctionKeywords"/>
+  <rule ref="Squiz.PHP.GlobalKeyword"/>
+  <rule ref="Squiz.PHP.NonExecutableCode"/>
+  <rule ref="Squiz.Scope.MemberVarScope"/>
+  <rule ref="Squiz.Scope.StaticThisUsage"/>
+
+</ruleset>

@@ -1,0 +1,37 @@
+To build a PEAR package you need the following pear packages installed:
+
+- Phing, see www.phing.info
+  Install with
+    pear channel-discover pear.phing.info
+    pear install phing/phing
+
+- Phing_d51PearPkg2Task, see http://pear.domain51.com/index.php?package=Phing_d51PearPkg2Task
+  Install with
+    pear channel-discover pear.domain51.com
+    pear install d51/Phing_d51PearPkg2Task-alpha
+  
+  After installing Phing_d51PearPkg2Task you need to upgrade the PEAR package
+  file manager as the version installed with Phing_d51PearPkg2Task has a bug:
+    pear upgrade --force PEAR_PackageFileManager
+  Version of PEAR package file manager should be >= 1.6.3
+
+If these requirements are met just type
+    phing
+and if everything works well you will find a newly build version in the build
+directory.
+
+To set the version number to be build just edit the VERSION file.
+
+
+Troubleshooting while building the pear package
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you get an exception which reads like
+---8<---
+'d51PearPkg2Task_Exception' with message 'unable to write package.xml file:
+PEAR_PackageFileManager2 Error: Package validation failed:
+Error: <notes> cannot be empty (<notes/>)
+--->8---
+you most likely increased the version number in the VERSION file, but did not
+add a new <changelog/> content block for this version number in the build.xml
+file.
