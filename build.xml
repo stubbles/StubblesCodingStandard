@@ -39,12 +39,20 @@
         <pear minimum_version="1.4.0"/>
         <package name="PHP_CodeSniffer" channel="pear.php.net" minimum_version="1.3.1"/>
       </dependencies>
-      <dirroles key="Stubbles">php</dirroles>
+      <dirroles key="/Stubbles">php</dirroles>
+
       <ignore>build/</ignore>
+      <ignore>build.readme</ignore>
       <ignore>build.xml</ignore>
+      <ignore>catalog.xml</ignore>
+      <ignore>nbproject/</ignore>
       <ignore>package.xml</ignore>
-      <ignore>README</ignore>
+      <ignore>readme.md</ignore>
       <ignore>VERSION</ignore>
+
+      <changelog version="0.4.1" date="2011-12-12">
+        - fix dir roles (mikey)
+      </changelog>
 
       <changelog version="0.4.0" date="2011-11-04">
         - adjust to changes introduced with PHP_CodeSniffer 1.3.0, raise minimum
