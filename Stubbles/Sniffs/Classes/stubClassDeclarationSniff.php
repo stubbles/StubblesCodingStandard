@@ -1,6 +1,6 @@
 <?php
 /**
- * Checks whitespace at the declaration of a class/interface 
+ * Checks whitespace at the declaration of a class/interface
  *
  * @author   Richard Sternagel <richard.sternagel@1und1.de>
  * @package  Classes
@@ -178,6 +178,7 @@ class Stubbles_Sniffs_Classes_stubClassDeclarationSniff extends PEAR_Sniffs_Clas
 
         $parentCount = count($parents);
 
+        $nextComma = 0;
         for ($i = 0; $i < $parentCount; $i++) {
             if ($tokens[$parents[$i]]['code'] === T_IMPLEMENTS) {
                 continue;
