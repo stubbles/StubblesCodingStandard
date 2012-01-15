@@ -36,7 +36,7 @@ class Stubbles_Sniffs_Commenting_stubFileCommentSniff implements PHP_CodeSniffer
      * The header comment parser for the current file.
      *
      * @var  PHP_CodeSniffer_Comment_Parser_ClassCommentParser
-     */
+    */
     protected $commentParser = null;
     /**
      * The current PHP_CodeSniffer_File object we are processing.
@@ -222,11 +222,13 @@ class Stubbles_Sniffs_Commenting_stubFileCommentSniff implements PHP_CodeSniffer
                                  ),
                  'subpackage' => array(
                                   'required'       => false,
+                                  'discouraged'    => true,
                                   'allow_multiple' => false,
                                   'order_text'     => 'follows @package',
                                  ),
                  'version'    => array(
                                   'required'       => false,
+                                  'discouraged'    => true,
                                   'allow_multiple' => false,
                                   'order_text'     => 'follows @package or @subpackage (is used)',
                                  ),
@@ -244,7 +246,12 @@ class Stubbles_Sniffs_Commenting_stubFileCommentSniff implements PHP_CodeSniffer
                                   'required'       => false,
                                   'allow_multiple' => false,
                                   'order_text'     => 'follows @subpackage or @see (if used) or @link (if used)',
-                                 ),
+                                 )/*,
+                 'since'      => array(
+                                  'required'       => false,
+                                  'allow_multiple' => true,
+                                  'order_text'     => 'follows any'
+                 )*/
                 );
 
         /*
@@ -278,7 +285,7 @@ class Stubbles_Sniffs_Commenting_stubFileCommentSniff implements PHP_CodeSniffer
                 $this->currentFile->addWarning($error, $commentEnd);
                 continue;
             }
-            
+
             // Get the line number for current tag.
             $tagName = ucfirst($tag);
             if ($info['allow_multiple'] === true) {
@@ -468,7 +475,7 @@ class Stubbles_Sniffs_Commenting_stubFileCommentSniff implements PHP_CodeSniffer
      */
     // omitted @author checks
     // protected function processAuthors($commentStart) { ... }
-    
+
     // omitted @category checks
     // protected function processCategory($errorPos) { ... }
 

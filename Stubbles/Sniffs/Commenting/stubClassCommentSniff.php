@@ -72,13 +72,7 @@ class Stubbles_Sniffs_Commenting_stubClassCommentSniff extends Stubbles_Sniffs_C
         $commentEnd = $phpcsFile->findPrevious($find, ($stackPtr - 1), null, true);
 
         if ($commentEnd !== false && $tokens[$commentEnd]['code'] === T_COMMENT) {
-           /*
-            * Stubbles
-            */
-            // skip code coverage comment
-            if(rtrim($tokens[$commentEnd]['content']) !== '// @codeCoverageIgnoreStart') {
-                $phpcsFile->addError('You must use "/**" style comments for a class comment', $stackPtr);
-            }
+            $phpcsFile->addError('You must use "/**" style comments for a class comment', $stackPtr);
             return;
         } else if ($commentEnd === false || $tokens[$commentEnd]['code'] !== T_DOC_COMMENT) {
             $phpcsFile->addError('Missing class doc comment', $stackPtr);
@@ -175,7 +169,7 @@ class Stubbles_Sniffs_Commenting_stubClassCommentSniff extends Stubbles_Sniffs_C
          * Stubbles
          */
         // use added omit tag param
-        $this->processTags($commentStart, $commentEnd, array('author', 'version'));
+        $this->processTags($commentStart, $commentEnd, array('author', 'version', 'package'));
     }
 
    /*

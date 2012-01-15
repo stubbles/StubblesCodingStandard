@@ -178,10 +178,12 @@ class Stubbles_Sniffs_Commenting_stubVariableCommentSniff extends PHP_CodeSniffe
         // Check for unknown/deprecated tags.
         $unknownTags = $this->commentParser->getUnknown();
         foreach ($unknownTags as $errorTag) {
-            // Unknown tags are not parsed, do not process further.
-            $error = "@$errorTag[tag] tag is not allowed in variable comment";
-            $phpcsFile->addWarning($error, ($commentStart + $errorTag['line']));
-            return;
+            if ('type' !== $errorTag['tag']) {
+                // Unknown tags are not parsed, do not process further.
+                $error = "@$errorTag[tag] tag is not allowed in variable comment";
+                $phpcsFile->addWarning($error, ($commentStart + $errorTag['line']));
+                return;
+            }
         }
 
         // Check each tag.
@@ -208,22 +210,22 @@ class Stubbles_Sniffs_Commenting_stubVariableCommentSniff extends PHP_CodeSniffe
 
         if ($var !== null) {
             $errorPos = ($commentStart + $var->getLine());
-            $index    = array_keys($this->commentParser->getTagOrders(), 'var');
+            $index    = array_keys($this->commentParser->getTagOrders(), 'type');
 
             if (count($index) > 1) {
-                $error = 'Only 1 @var tag is allowed in variable comment';
+                $error = 'Only 1 @type tag is allowed in variable comment';
                 $this->currentFile->addError($error, $errorPos);
                 return;
             }
 
             if ($index[0] !== 1) {
-                $error = 'The @var tag must be the first tag in a variable comment';
+                $error = 'The @type tag must be the first tag in a variable comment';
                 $this->currentFile->addError($error, $errorPos);
             }
 
             $content = $var->getContent();
             if (empty($content) === true) {
-                $error = 'Var type missing for @var tag in variable comment';
+                $error = 'Var type missing for @type tag in variable comment';
                 $this->currentFile->addError($error, $errorPos);
                 return;
             } else {
@@ -244,12 +246,12 @@ class Stubbles_Sniffs_Commenting_stubVariableCommentSniff extends PHP_CodeSniffe
              * Stubbles (space=2)
              */
             if ($spacing !== 2) {
-                $error  = '@var tag indented incorrectly. ';
+                $error  = '@type tag indented incorrectly. ';
                 $error .= "Expected 2 spaces but found $spacing.";
                 $this->currentFile->addError($error, $errorPos);
             }
         } else {
-            $error = 'Missing @var tag in variable comment';
+            $error = 'Missing @type tag in variable comment';
             $this->currentFile->addError($error, $commentEnd);
         }
     }
