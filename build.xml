@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="Stubbles CodeSniffer Sniffs" default="main">
   <taskdef classname="phing.tasks.ext.d51PearPkg2Task" name="d51pearpkg2"/>
-  
+
   <target name="main" depends="create-package-xml">
     <if>
       <available file="package.xml" property="package.xml.exists"/>
@@ -23,7 +23,7 @@
     <d51pearpkg2 dir="." baseinstalldir="PHP/CodeSniffer/Standards">
       <name>StubblesCodingStandard</name>
       <summary>Stubbles Coding Standard (for PHP_CodeSniffer).</summary>
-      <channel>pear.php-tools.net</channel>
+      <channel>pear.bovigo.org</channel>
       <description>
         The official Stubbles Coding Standards to use
         with PHP_CodeSniffer. Utilizes predefined and
@@ -49,6 +49,10 @@
       <ignore>package.xml</ignore>
       <ignore>readme.md</ignore>
       <ignore>VERSION</ignore>
+
+      <changelog version="0.5.0" date="2012-04-03">
+        - switch PEAR channel to pear.bovigo.org (mikey)
+      </changelog>
 
       <changelog version="0.4.1" date="2011-12-12">
         - fix dir roles (mikey)
