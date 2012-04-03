@@ -23,7 +23,7 @@
     <d51pearpkg2 dir="." baseinstalldir="PHP/CodeSniffer/Standards">
       <name>StubblesCodingStandard</name>
       <summary>Stubbles Coding Standard (for PHP_CodeSniffer).</summary>
-      <channel>pear.php-tools.net</channel>
+      <channel>pear.bovigo.org</channel>
       <description>
         The official Stubbles Coding Standards to use
         with PHP_CodeSniffer. Utilizes predefined and
@@ -50,8 +50,12 @@
       <ignore>readme.md</ignore>
       <ignore>VERSION</ignore>
 
-      <changelog version="0.5.0">
+      <changelog version="0.6.0">
         - adjust to style changes required by PHP 5.3 and switch to Docblox
+      </changelog>
+
+      <changelog version="0.5.0" date="2012-04-03">
+        - switch PEAR channel to pear.bovigo.org (mikey)
       </changelog>
 
       <changelog version="0.4.1" date="2011-12-12">
